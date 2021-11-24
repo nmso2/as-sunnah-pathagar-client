@@ -1,13 +1,13 @@
 import './App.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Books from './pages/Books/Books';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home/Home';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import DashboardHome from './pages/Dashboard/DashboardHome/DashboardHome';
 import MakeAdmin from './pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddBooks from './pages/Dashboard/AddBooks/AddBooks';
+import Books from './pages/Books/Books/Books';
 AOS.init();
 
 function App() {
