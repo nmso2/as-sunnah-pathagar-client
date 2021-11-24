@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Home, MenuBook } from '@mui/icons-material';
+import { Dashboard, Home, MenuBook } from '@mui/icons-material';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
@@ -151,6 +151,17 @@ const Header = () => {
                     <MenuBook />
                 </IconButton>
                 <p>Books</p></MenuItem>
+            <MenuItem component={Link} to='/dashboard'>
+                <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                >
+                    <Dashboard />
+                </IconButton>
+                <p>Dashboard</p></MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
                     size="large"
