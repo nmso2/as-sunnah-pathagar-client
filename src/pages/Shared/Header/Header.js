@@ -4,18 +4,16 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import { Home, MenuBook } from '@mui/icons-material';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+import logo from '../../../resources/images/logo.png'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -57,11 +55,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const darkTheme = createTheme({
+const appBarTheme = createTheme({
     palette: {
-        mode: 'dark',
+        mode: 'light',
         primary: {
-            main: '#1976d2',
+            main: '#b0c2d4',
         },
     },
 });
@@ -109,7 +107,7 @@ const Header = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem component={Link} to='/books'>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
         </Menu>
     );
@@ -131,26 +129,28 @@ const Header = () => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="error">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
-            <MenuItem>
+            <MenuItem component={Link} to='/home'>
                 <IconButton
                     size="large"
-                    aria-label="show 17 new notifications"
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
                     color="inherit"
                 >
-                    <Badge badgeContent={17} color="error">
-                        <NotificationsIcon />
-                    </Badge>
+                    <Home />
                 </IconButton>
-                <p>Notifications</p>
-            </MenuItem>
+                <p>Home</p></MenuItem>
+            <MenuItem component={Link} to='/books'>
+                <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                >
+                    <MenuBook />
+                </IconButton>
+                <p>Books</p></MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
                     size="large"
@@ -168,18 +168,11 @@ const Header = () => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <ThemeProvider theme={darkTheme}>
-                <AppBar position="static">
+            <ThemeProvider theme={appBarTheme}>
+                <AppBar position="sticky">
                     <Toolbar>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                            sx={{ display: { sm: 'block' } }}
-                        >
-                            MUI
-                        </Typography>
-                        <Search sx={{ width: { xs: '50%', sm: 'block', md:'auto' }, marginLeft: '30px' }}>
+                        <img width='80px' src={logo} alt="" />
+                        <Search sx={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }}>
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>
@@ -188,23 +181,18 @@ const Header = () => {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
+
                         <Box sx={{ flexGrow: 1 }} />
-                        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                                <Badge badgeContent={4} color="error">
-                                    <MailIcon />
-                                </Badge>
-                            </IconButton>
+                        <Box sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>
+
+                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/home">HOME</Link>
+
+                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/books">BOOKS</Link>
+
+                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/dashboard">Dashboard</Link>
+
                             <IconButton
-                                size="large"
-                                aria-label="show 17 new notifications"
-                                color="inherit"
-                            >
-                                <Badge badgeContent={17} color="error">
-                                    <NotificationsIcon />
-                                </Badge>
-                            </IconButton>
-                            <IconButton
+                                style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }}
                                 size="large"
                                 edge="end"
                                 aria-label="account of current user"
