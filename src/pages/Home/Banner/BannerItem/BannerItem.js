@@ -1,16 +1,10 @@
-import { Button, Paper } from '@mui/material';
 import React from 'react';
 
 const BannerItem = (props) => {
     return (
-        <Paper>
-            <h2>{props.item.name}</h2>
-            <p>{props.item.description}</p>
-
-            <Button className="CheckButton">
-                Check it out!
-            </Button>
-        </Paper>
+        <div>
+            <img src={props.item} alt='' className='mx-auto h-60 lg:h-96 w-full'></img>
+        </div>
     );
 };
 
