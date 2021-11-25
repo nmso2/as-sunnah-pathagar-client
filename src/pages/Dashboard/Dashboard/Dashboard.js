@@ -19,6 +19,7 @@ import {
 } from "react-router-dom";
 import { AdminPanelSettings, DashboardCustomize, LibraryAdd, MenuBook } from '@mui/icons-material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import useAuth from '../../../hooks/useAuth';
 
 const appBarTheme = createTheme({
     palette: {
@@ -32,6 +33,7 @@ const appBarTheme = createTheme({
 const drawerWidth = 240;
 
 function Dashboard(props) {
+    const { admin } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -59,7 +61,7 @@ function Dashboard(props) {
                 </ListItem>
             </List>
             <Divider />
-            <List>
+            {admin && <List>
                 <ListItem button component={Link} to='/dashboard/makeAdmin'>
                     <ListItemIcon>
                         <AdminPanelSettings />
@@ -72,7 +74,7 @@ function Dashboard(props) {
                     </ListItemIcon>
                     <ListItemText primary='Add Books' />
                 </ListItem>
-            </List>
+            </List>}
 
         </div>
     );
