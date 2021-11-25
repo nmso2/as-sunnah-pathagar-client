@@ -11,29 +11,32 @@ const Book = ({ book }) => {
         <div>
             <Paper
                 data-aos="fade-up"
-                data-aos-duration="3000" elevation={3}>
+                data-aos-duration="3000" elevation={3}
+                sx={{ height: 475 }}>
                 <Box>
                     <Box>
-                        <img style={{ margin: 'auto', width: '300px', height: '300px' }} src={`data:image/png;base64,${image}`} alt="" />
+                        <img style={{ margin: 'auto', maxWidth: '300px', maxHeight: '300px', padding: '15px 0px' }} src={`data:image/png;base64,${image}`} alt="" />
                     </Box>
 
-                    <Box>
+                    <Box sx={{ textAlign: 'left', px: 1 }}>
                         <Typography>
                             {name}
                         </Typography>
                         <Typography>
-                            By: {author}
+                            By: <span className="text-red-600">{author}</span>
+
                         </Typography>
                         {translator && <Typography>
-                            Translator: {translator}
+                            Translator: <span className="text-red-600">{translator}</span>
                         </Typography>}
                         <Typography>
-                            Category: {category}
+                            Category: <span className="text-red-600">{category}</span>
                         </Typography>
                         <Typography>
-                            Publisher: {publisher}
+                            Publisher: <span className="text-red-600">{publisher}</span>
                         </Typography>
                     </Box>
+                    
                 </Box>
 
             </Paper>

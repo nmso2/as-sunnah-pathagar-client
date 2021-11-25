@@ -8,26 +8,37 @@ import DashboardHome from './pages/Dashboard/DashboardHome/DashboardHome';
 import MakeAdmin from './pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddBooks from './pages/Dashboard/AddBooks/AddBooks';
 import Books from './pages/Books/Books/Books';
+import AuthProvider from './context/AuthProvider';
+import Login from './pages/Login/Login/Login';
+import Registration from './pages/Login/Registration/Registration';
+import AdminRoute from './pages/Login/AdminRoute/AdminRoute';
+import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 AOS.init();
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route exact path='/dashboard' element={<DashboardHome />}>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/books" element={<Books />} />
+            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+              <Route exact path='/dashboard' element={<PrivateRoute><DashboardHome /></PrivateRoute>}>
+              </Route>
+              <Route path='/dashboard/makeAdmin' element={<AdminRoute><MakeAdmin /></AdminRoute>}>
+              </Route>
+              <Route path='/dashboard/addBooks' element={<AdminRoute><AddBooks /></AdminRoute>}>
+              </Route>
             </Route>
-            <Route path='/dashboard/makeAdmin' element={<MakeAdmin />}>
+            <Route path="/login" element={<Login />}>
             </Route>
-            <Route path='/dashboard/addbooks' element={<AddBooks />}>
+            <Route path="/registration" element={<Registration />}>
             </Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

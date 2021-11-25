@@ -91,7 +91,7 @@ const AddBooks = () => {
                     onChange={e => setImage(e.target.files[0])} />
                 <br />
 
-                <Button variant="contained" style={{ backgroundColor: '#5CE7ED', marginTop: 15 }} type='submit'>Add Book</Button>
+                <Button variant="contained" style={{ backgroundColor: '#b0c2d4', marginTop: 15, color: 'black' }} type='submit'>Add Book</Button>
             </form>
             {success && <p style={{ color: 'green' }}>{success}</p>}
         </div>

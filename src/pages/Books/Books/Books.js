@@ -1,4 +1,3 @@
-import { Box } from '@mui/system';
 import React from 'react';
 import Header from '../../Shared/Header/Header';
 import useBooks from '../../../hooks/useBooks';
@@ -10,24 +9,11 @@ const Books = () => {
     return (
         <div>
             <Header></Header>
-            <Box
-                sx={{
-
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    '& > :not(style)': {
-                        m: 1,
-                        width: 300,
-
-                    },
-                    alignItems: 'stretch'
-                }}
-            >
+            <div className="container my-10 p-5 mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
                 {
                     books.map(book => <Book key={book._id} book={book}></Book>)
                 }
-
-            </Box>
+            </div>
         </div>
     );
 };

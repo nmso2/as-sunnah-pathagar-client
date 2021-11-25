@@ -66,7 +66,7 @@ function Dashboard(props) {
                     </ListItemIcon>
                     <ListItemText primary='Make Admin' />
                 </ListItem>
-                <ListItem button component={Link} to='/dashboard/addbooks'>
+                <ListItem button component={Link} to='/dashboard/addBooks'>
                     <ListItemIcon>
                         <LibraryAdd />
                     </ListItemIcon>

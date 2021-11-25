@@ -13,7 +13,8 @@ import { Dashboard, Home, MenuBook } from '@mui/icons-material';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import logo from '../../../resources/images/logo.png'
+import logo from '../../../resources/images/logo.svg'
+import useAuth from '../../../hooks/useAuth';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -67,6 +68,8 @@ const appBarTheme = createTheme({
 
 const Header = () => {
 
+    const { user, logOut } = useAuth();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -107,8 +110,17 @@ const Header = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem component={Link} to='/books'>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            {user.email ? <Box>
+                <MenuItem component={Link} to='/profile'>Profile</MenuItem>
+                <MenuItem component={Link} to='/myBooks'>My Books</MenuItem>
+                <MenuItem onClick={logOut}>Logout</MenuItem>
+            </Box> :
+                <Box>
+                    <MenuItem component={Link} to='/login'>Login</MenuItem>
+                    <MenuItem component={Link} to='/registration'>Registration</MenuItem>
+                </Box>}
+
+
         </Menu>
     );
 
@@ -151,7 +163,8 @@ const Header = () => {
                     <MenuBook />
                 </IconButton>
                 <p>Books</p></MenuItem>
-            <MenuItem component={Link} to='/dashboard'>
+
+            {user?.email && <MenuItem component={Link} to='/dashboard'>
                 <IconButton
                     size="large"
                     aria-label="account of current user"
@@ -162,6 +175,7 @@ const Header = () => {
                     <Dashboard />
                 </IconButton>
                 <p>Dashboard</p></MenuItem>
+            }
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
                     size="large"
@@ -183,7 +197,7 @@ const Header = () => {
                 <AppBar position="sticky">
                     <Toolbar>
                         <img width='80px' src={logo} alt="" />
-                        <Search sx={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }}>
+                        <Search sx={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px', background: 'white' }}>
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>
@@ -196,11 +210,11 @@ const Header = () => {
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>
 
-                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/home">HOME</Link>
+                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/home">Home</Link>
 
-                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/books">BOOKS</Link>
+                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/books">Books</Link>
 
-                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/dashboard">Dashboard</Link>
+                            {user?.email && <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/dashboard">Dashboard</Link>}
 
                             <IconButton
                                 style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }}
