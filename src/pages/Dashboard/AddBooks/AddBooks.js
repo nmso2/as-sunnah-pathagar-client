@@ -25,7 +25,7 @@ const AddBooks = () => {
         formData.append('publisher', publisher);
         formData.append('image', image);
 
-        fetch('http://localhost:5000/books', {
+        fetch('https://as-sunnah-pathagar.herokuapp.com/books', {
             method: 'POST',
             body: formData
         })
