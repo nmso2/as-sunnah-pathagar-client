@@ -5,7 +5,6 @@ const MyBook = (props) => {
     const { _id, bookId, status } = props.request;
     const { handleCancelRequest } = props;
     const { books } = useBooks();
-    console.log(books);
 
     return (
         <div>

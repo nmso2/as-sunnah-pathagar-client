@@ -86,6 +86,12 @@ function Dashboard(props) {
                     </ListItemIcon>
                     <ListItemText primary='Add Books' />
                 </ListItem>
+                <ListItem button component={Link} to='/dashboard/manageRequests'>
+                    <ListItemIcon>
+                        <LibraryAdd />
+                    </ListItemIcon>
+                    <ListItemText primary='Manage Requests' />
+                </ListItem>
             </List>}
 
         </div>

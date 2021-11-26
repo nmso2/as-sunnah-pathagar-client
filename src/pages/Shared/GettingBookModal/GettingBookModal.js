@@ -38,8 +38,6 @@ const GettingBookModal = ({ openGettingBookModal, handleGettingBookClose, book }
 
         const requestedBook = { name, email, phone, bookName, address, bookId, status };
 
-        console.log(user);
-
         fetch('https://as-sunnah-pathagar.herokuapp.com/requestedBook', {
             method: 'POST',
             headers: {
