@@ -3,9 +3,14 @@ import React from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
+import GettingBookModal from '../../Shared/GettingBookModal/GettingBookModal';
 AOS.init();
 
 const Book = ({ book }) => {
+    const [openGettingBookModal, setOpenGettingBookModal] = React.useState(false);
+    const handleGettingBookOpen = () => setOpenGettingBookModal(true);
+    const handleGettingBookClose = () => setOpenGettingBookModal(false);
+
     const { name, image, category, author, translator, publisher } = book;
     return (
         <div>
@@ -34,9 +39,10 @@ const Book = ({ book }) => {
                     </Typography>
                 </CardContent>
 
-                <Link to={``}><button type="button" className="my-3 focus:outline-none text-white text-md py-2.5 px-5 rounded-md bg-yellow-500 hover:bg-yellow-600 hover:shadow-lg">Get Book</button>
+                <Link to={``}><button type="button" className="my-3 focus:outline-none text-white text-md py-2.5 px-5 rounded-md hover:shadow-lg" style={{ backgroundColor: '#6797c7' }} onClick={handleGettingBookOpen}>Get Book</button>
                 </Link>
             </Card>
+            <GettingBookModal handleGettingBookClose={handleGettingBookClose} openGettingBookModal={openGettingBookModal} book={book}></GettingBookModal>
         </div>
     );
 };

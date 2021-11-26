@@ -17,7 +17,7 @@ import {
     Outlet,
     Link,
 } from "react-router-dom";
-import { AdminPanelSettings, DashboardCustomize, LibraryAdd, MenuBook } from '@mui/icons-material';
+import { AdminPanelSettings, DashboardCustomize, Home, LibraryAdd, LocalLibrary, MenuBook } from '@mui/icons-material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useAuth from '../../../hooks/useAuth';
 
@@ -47,6 +47,12 @@ function Dashboard(props) {
             <Divider />
 
             <List>
+                <ListItem button component={Link} to='/home'>
+                    <ListItemIcon>
+                        <Home />
+                    </ListItemIcon>
+                    <ListItemText primary='Home' />
+                </ListItem>
                 <ListItem button component={Link} to='/books'>
                     <ListItemIcon>
                         <MenuBook />
@@ -58,6 +64,12 @@ function Dashboard(props) {
                         <DashboardCustomize />
                     </ListItemIcon>
                     <ListItemText primary='Dashboard' />
+                </ListItem>
+                <ListItem button component={Link} to='/dashboard/myBooks'>
+                    <ListItemIcon>
+                        <LocalLibrary />
+                    </ListItemIcon>
+                    <ListItemText primary='My Books' />
                 </ListItem>
             </List>
             <Divider />

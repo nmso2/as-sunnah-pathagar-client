@@ -13,6 +13,7 @@ import Login from './pages/Login/Login/Login';
 import Registration from './pages/Login/Registration/Registration';
 import AdminRoute from './pages/Login/AdminRoute/AdminRoute';
 import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
+import MyBooks from './pages/Dashboard/MyBooks/MyBooks';
 AOS.init();
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
               <Route path='/dashboard/makeAdmin' element={<AdminRoute><MakeAdmin /></AdminRoute>}>
               </Route>
               <Route path='/dashboard/addBooks' element={<AdminRoute><AddBooks /></AdminRoute>}>
+              </Route>
+              <Route path='/dashboard/myBooks' element={<PrivateRoute><MyBooks /></PrivateRoute>}>
               </Route>
             </Route>
             <Route path="/login" element={<Login />}>
