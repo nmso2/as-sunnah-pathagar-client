@@ -6,7 +6,7 @@ import useGetRequest from '../../../hooks/useGetRequest';
 
 const DashboardHome = () => {
     const { items: users } = useGetRequest('users');
-    const { items: requestedBook } = useGetRequest('requestedBook');
+    const { items: requestedBooks } = useGetRequest('requestedBooks');
     const { books } = useBooks();
 
     const { admin, user } = useAuth();
@@ -39,7 +39,7 @@ const DashboardHome = () => {
                                             Total Request
                                         </div>
                                         <div className="text-xl font-bold text-white">
-                                            {requestedBook.length}
+                                            {requestedBooks.length}
                                         </div>
                                     </div>
                                     <LocalLibrary sx={{ color: 'white' }} />
