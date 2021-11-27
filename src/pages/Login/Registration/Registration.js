@@ -24,7 +24,7 @@ const Registration = () => {
                 setUserName(loginData.name);
                 navigate('/login');
                 setError('');
-                saveUser(loginData.email, loginData.name, 'POST');
+                saveUser(loginData.email, loginData.name, loginData.phone, loginData.address, 'POST');
                 setSuccess(true);
             }).catch((error) => {
                 setError(error.message);

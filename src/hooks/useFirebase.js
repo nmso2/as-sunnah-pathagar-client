@@ -15,6 +15,8 @@ const useFirebase = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
 
 
@@ -32,6 +34,12 @@ const useFirebase = () => {
     }
     const handaleEmailChange = e => {
         setEmail(e.target.value);
+    }
+    const handalePhoneChange = e => {
+        setPhone(e.target.value);
+    }
+    const handaleAddressChange = e => {
+        setAddress(e.target.value);
     }
     const handalePasswordChange = e => {
         setPassword(e.target.value);
@@ -94,8 +102,8 @@ const useFirebase = () => {
         });
     }
 
-    const saveUser = (email, displayName, method) => {
-        const user = { email, displayName };
+    const saveUser = (email, displayName, phone, address, method) => {
+        const user = { email, displayName, phone, address };
         fetch('https://as-sunnah-pathagar.herokuapp.com/users', {
             method: method,
             headers: {
@@ -118,11 +126,15 @@ const useFirebase = () => {
         createNewUser,
         handleNameChange,
         handaleEmailChange,
+        handalePhoneChange,
+        handaleAddressChange,
         handalePasswordChange,
         loginWithEmailPassword,
         name,
         email,
         password,
+        phone,
+        address,
         setUserName,
         setError,
         saveUser
