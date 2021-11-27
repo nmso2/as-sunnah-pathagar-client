@@ -37,14 +37,16 @@ function App() {
               </Route>
               <Route path='/dashboard/myBooks' element={<PrivateRoute><MyBooks /></PrivateRoute>}>
               </Route>
-              <Route path='/dashboard/manageRequests' element={<PrivateRoute><ManageRequests /></PrivateRoute>}>
+              <Route path='/dashboard/manageRequests' element={<AdminRoute><ManageRequests /></AdminRoute>}>
               </Route>
             </Route>
             <Route path="/login" element={<Login />}>
             </Route>
             <Route path="/registration" element={<Registration />}>
             </Route>
-            <Route path="/profile" element={<UserProfile />}>
+            <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>}>
+            </Route>
+            <Route path="/myBooks" element={<PrivateRoute><MyBooks /></PrivateRoute>}>
             </Route>
             <Route path="*" element={<NotFound />}>
             </Route>
