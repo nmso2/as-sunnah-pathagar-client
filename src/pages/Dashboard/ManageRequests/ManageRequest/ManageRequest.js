@@ -7,6 +7,7 @@ import {
 } from 'react-accessible-accordion';
 import { useState } from 'react';
 import useBooks from '../../../../hooks/useBooks';
+import { ArrowDropDown } from '@mui/icons-material';
 
 const ManageRequest = (props) => {
     const { handleCancelRequests } = props;
@@ -38,7 +39,7 @@ const ManageRequest = (props) => {
         <div>
             {books.filter(book => request.bookId === book._id).map(requested => <div>
                 <div className="lg:flex items-baseline justify-end">
-                    <p className="lg:text-3xl lg:px-5">{requested.name}</p>
+                    <p className="lg:px-5">{requested.name}</p>
 
                     <button className="border border-blue-500 text-blue-500 rounded-md px-5 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-blue-600 focus:outline-none focus:shadow-outline lg:block" onClick={() => handleUpdateRequest('Out of Stock')}>Out of Stock</button>
                     <button className="border border-blue-500 text-blue-500 rounded-md px-5 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-blue-600 focus:outline-none focus:shadow-outline lg:block" onClick={() => handleUpdateRequest('Confirmed')}>Confirm</button>
@@ -48,8 +49,8 @@ const ManageRequest = (props) => {
                 <Accordion allowZeroExpanded className="py-2">
                     <AccordionItem>
                         <AccordionItemHeading>
-                            <AccordionItemButton>
-                                Request Details
+                            <AccordionItemButton className="cursor-pointer text-red-500">
+                                Request Details<ArrowDropDown sx={{ fontSize: 35 }} />
                             </AccordionItemButton>
                         </AccordionItemHeading>
                         <AccordionItemPanel>
