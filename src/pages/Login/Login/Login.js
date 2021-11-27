@@ -11,6 +11,9 @@ const Login = () => {
 
     const { logInUsingGoogle, setIsLoading, loginWithEmailPassword, email, setUser, error, setError, isLoading, saveUser } = useAuth();
 
+    const phone = 'Not Provided';
+    const address = 'Not Provided';
+
     const location = useLocation();
     const navigate = useNavigate()
     const redirect_uri = location.state?.from || '/';
@@ -29,7 +32,7 @@ const Login = () => {
             .then((result) => {
                 navigate(redirect_uri);
                 setError('');
-                saveUser(result.user.email, result.user.displayName, 'PUT');
+                saveUser(result.user.email, result.user.displayName, phone, address, 'PUT');
             }).catch((error) => {
                 setError(error.message);
             }).finally(() => setIsLoading(false));

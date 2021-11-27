@@ -4,7 +4,7 @@ const useCancelRequests = () => {
 
     const [requests, setRequest] = useState([]);
     useEffect(() => {
-        fetch('https://as-sunnah-pathagar.herokuapp.com/requestedBook')
+        fetch('https://as-sunnah-pathagar.herokuapp.com/requestedBooks')
             .then(res => res.json())
             .then(data => setRequest(data));
     }, []);
