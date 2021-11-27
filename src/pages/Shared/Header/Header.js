@@ -197,15 +197,6 @@ const Header = () => {
                 <AppBar position="sticky">
                     <Toolbar>
                         <img width='80px' src={logo} alt="" />
-                        <Search sx={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px', background: 'white' }}>
-                            <SearchIconWrapper>
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Search…"
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
-                        </Search>
 
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>

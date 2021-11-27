@@ -1,5 +1,6 @@
 import React from 'react';
 import useBooks from '../../../hooks/useBooks';
+import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 import Banner from '../Banner/Banner/Banner';
 import NewBooks from '../NewBooks/NewBooks';
@@ -20,6 +21,7 @@ const Home = () => {
                         }
                     </div>
             }
+            <Footer></Footer>
         </div>
     );
 };

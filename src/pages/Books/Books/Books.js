@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../Shared/Header/Header';
 import useBooks from '../../../hooks/useBooks';
 import Book from '../Book/Book';
+import Footer from '../../Shared/Footer/Footer';
 
 const Books = () => {
     const { books, isLoading } = useBooks();
@@ -17,7 +18,7 @@ const Books = () => {
                     }
                 </div>
             }
-
+            <Footer></Footer>
         </div>
     );
 };

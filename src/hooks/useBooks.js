@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 
-const useBooks = (id) => {
+const useBooks = () => {
     const [books, setBooks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
