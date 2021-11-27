@@ -1,13 +1,14 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
-import AOS from 'aos';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import 'aos/dist/aos.css';
+import AOS from 'aos';
 import { Link } from 'react-router-dom';
 import GettingBookModal from '../../Shared/GettingBookModal/GettingBookModal';
 import useAuth from '../../../hooks/useAuth';
 AOS.init();
 
-const Book = ({ book }) => {
+
+const NewBooks = ({ book }) => {
     const { user } = useAuth();
     const [openGettingBookModal, setOpenGettingBookModal] = React.useState(false);
     const handleGettingBookOpen = () => setOpenGettingBookModal(true);
@@ -15,9 +16,9 @@ const Book = ({ book }) => {
 
     const { name, image, category, author, translator, publisher } = book;
     return (
-        <div>
-            <Card data-aos="fade-up"
-                data-aos-duration="3000">
+        <div data-aos="fade-up"
+            data-aos-duration="3000">
+            <Card>
                 <CardMedia>
                     <img style={{ margin: 'auto', maxWidth: '300px', maxHeight: '300px', padding: '15px 0px' }} src={`data:image/png;base64,${image}`} alt="" />
                 </CardMedia>
@@ -43,10 +44,11 @@ const Book = ({ book }) => {
 
                 {user?.email ? <button type="button" className="my-3 focus:outline-none text-white text-md py-2.5 px-5 rounded-md hover:shadow-lg" style={{ backgroundColor: '#6797c7' }} onClick={handleGettingBookOpen}>Get Book</button> :
                     <Link to="/login"><button type="button" className="my-3 focus:outline-none text-white text-md py-2.5 px-5 rounded-md hover:shadow-lg" style={{ backgroundColor: '#6797c7' }}>Get Book</button></Link>}
+
             </Card>
             <GettingBookModal handleGettingBookClose={handleGettingBookClose} openGettingBookModal={openGettingBookModal} book={book}></GettingBookModal>
         </div>
     );
 };
 
-export default Book;
+export default NewBooks;

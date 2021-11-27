@@ -17,7 +17,7 @@ import {
     Outlet,
     Link,
 } from "react-router-dom";
-import { AdminPanelSettings, DashboardCustomize, Home, LibraryAdd, LocalLibrary, MenuBook } from '@mui/icons-material';
+import { AdminPanelSettings, DashboardCustomize, Dehaze, Home, LibraryAdd, LocalLibrary, MenuBook } from '@mui/icons-material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useAuth from '../../../hooks/useAuth';
 
@@ -45,8 +45,7 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
-
-            <List>
+            {admin ? <List>
                 <ListItem button component={Link} to='/home'>
                     <ListItemIcon>
                         <Home />
@@ -65,15 +64,6 @@ function Dashboard(props) {
                     </ListItemIcon>
                     <ListItemText primary='Dashboard' />
                 </ListItem>
-                <ListItem button component={Link} to='/dashboard/myBooks'>
-                    <ListItemIcon>
-                        <LocalLibrary />
-                    </ListItemIcon>
-                    <ListItemText primary='My Books' />
-                </ListItem>
-            </List>
-            <Divider />
-            {admin && <List>
                 <ListItem button component={Link} to='/dashboard/makeAdmin'>
                     <ListItemIcon>
                         <AdminPanelSettings />
@@ -88,12 +78,38 @@ function Dashboard(props) {
                 </ListItem>
                 <ListItem button component={Link} to='/dashboard/manageRequests'>
                     <ListItemIcon>
-                        <LibraryAdd />
+                        <Dehaze />
                     </ListItemIcon>
                     <ListItemText primary='Manage Requests' />
                 </ListItem>
-            </List>}
-
+            </List> :
+                <List>
+                    <ListItem button component={Link} to='/home'>
+                        <ListItemIcon>
+                            <Home />
+                        </ListItemIcon>
+                        <ListItemText primary='Home' />
+                    </ListItem>
+                    <ListItem button component={Link} to='/books'>
+                        <ListItemIcon>
+                            <MenuBook />
+                        </ListItemIcon>
+                        <ListItemText primary='Books' />
+                    </ListItem>
+                    <ListItem button component={Link} to='/dashboard'>
+                        <ListItemIcon>
+                            <DashboardCustomize />
+                        </ListItemIcon>
+                        <ListItemText primary='Dashboard' />
+                    </ListItem>
+                    <ListItem button component={Link} to='/dashboard/myBooks'>
+                        <ListItemIcon>
+                            <LocalLibrary />
+                        </ListItemIcon>
+                        <ListItemText primary='My Books' />
+                    </ListItem>
+                </List>}
+            <Divider />
         </div>
     );
 

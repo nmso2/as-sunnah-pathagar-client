@@ -50,7 +50,7 @@ const Login = () => {
         <Container>
             <Grid container spacing={2}>
                 <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                    <Typography variant="body1" gutterBottom>Login</Typography>
+                    <Typography variant="body1" gutterBottom fontSize="40px">Login</Typography>
                     <form onSubmit={handleEmailLogin}>
                         <TextField
                             sx={{ width: "75%", m: 1 }}
@@ -73,13 +73,12 @@ const Login = () => {
                             variant="standard"
                         />
 
-                        <Button sx={{ width: "75%", m: 1 }} variant="contained" style={{ backgroundColor: '#5CE7ED', marginBottom: 25 }} type="submit">Login</Button>
-                        <NavLink style={{ textDecoration: 'none' }} to="/registration">
-                            <Button variant="text">New user? Please register</Button>
-                        </NavLink>
+                        <Button sx={{ width: "75%", m: 1 }} variant="contained" style={{ backgroundColor: '#6797c7' }} type="submit">Login</Button>
+                        <Button sx={{ width: "75%", m: 1 }} variant="contained" style={{ backgroundColor: '#6797c7' }} onClick={handleGoogleLogIn}>Login With Google</Button>
                     </form>
-
-                    <Button sx={{ width: "75%", m: 1 }} variant="contained" style={{ backgroundColor: '#5CE7ED', marginBottom: 25 }} onClick={handleGoogleLogIn}>Login With Google</Button>
+                    <NavLink style={{ textDecoration: 'none' }} to="/registration">
+                        <Button variant="text">New user? Please register</Button>
+                    </NavLink> <br />
 
                     {isLoading && <CircularProgress />}
                     {email && <Alert severity="success">Registration Successfull!</Alert>}

@@ -44,16 +44,17 @@ const Registration = () => {
         <Container>
             <Grid container spacing={2}>
                 <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                    <Typography variant="body1" gutterBottom>Please Register</Typography>
+                    <Typography variant="body1" gutterBottom fontSize="40px">Please Register</Typography>
                     {!isLoading && <form onSubmit={handleCreateUser}>
                         <TextField
                             sx={{ width: "75%", m: 1 }}
-                            id="outlined-email-input"
-                            label="Your Name"
+                            id="outlined-name-input"
+                            label="Name"
                             name="name"
                             onBlur={handleOnBlur}
                             type="name"
                             variant="standard"
+                            required
                         />
                         <TextField
                             sx={{ width: "75%", m: 1 }}
@@ -63,6 +64,27 @@ const Registration = () => {
                             onBlur={handleOnBlur}
                             type="email"
                             variant="standard"
+                            required
+                        />
+                        <TextField
+                            sx={{ width: "75%", m: 1 }}
+                            id="outlined-number-input"
+                            label="Phone"
+                            name="phone"
+                            onBlur={handleOnBlur}
+                            type="tel"
+                            variant="standard"
+                            required
+                        />
+                        <TextField
+                            sx={{ width: "75%", m: 1 }}
+                            id="outlined-address-input"
+                            label="Address"
+                            type="address"
+                            name="address"
+                            onBlur={handleOnBlur}
+                            variant="standard"
+                            required
                         />
                         <TextField
                             sx={{ width: "75%", m: 1 }}
@@ -72,6 +94,7 @@ const Registration = () => {
                             name="password"
                             onBlur={handleOnBlur}
                             variant="standard"
+                            required
                         />
                         <TextField
                             sx={{ width: "75%", m: 1 }}
@@ -81,9 +104,9 @@ const Registration = () => {
                             name="confirmPassword"
                             onBlur={handleOnBlur}
                             variant="standard"
+                            required
                         />
-
-                        <Button sx={{ width: "75%", m: 1 }} variant="contained" style={{ backgroundColor: '#5CE7ED', marginBottom: 25 }} type="submit">Register</Button>
+                        <Button sx={{ width: "75%", m: 1 }} variant="contained" style={{ backgroundColor: '#6797c7' }} type="submit">Register</Button>
                         <NavLink style={{ textDecoration: 'none' }} to="/login">
                             <Button variant="text">Already registerd? Please login</Button>
                         </NavLink>

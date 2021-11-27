@@ -7,19 +7,27 @@ import banner3 from '../../../../resources/images/bannerImage/banner-3.jpg'
 import banner4 from '../../../../resources/images/bannerImage/banner-4.jpg'
 import banner5 from '../../../../resources/images/bannerImage/banner-5.jpg'
 import banner6 from '../../../../resources/images/bannerImage/banner-6.jpg'
-import banner7 from '../../../../resources/images/bannerImage/banner-7.jpg'
-import banner8 from '../../../../resources/images/bannerImage/banner-8.jpg'
-import banner9 from '../../../../resources/images/bannerImage/banner-9.jpg'
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { EmailRounded, FacebookRounded } from '@mui/icons-material';
 
 const Banner = () => {
 
-    const items = [banner1, banner2, banner3, banner4, banner5, banner6, banner7, banner8, banner9]
+    const items = [banner1, banner2, banner3, banner4, banner5, banner6]
 
     return (
         <Box>
-            <Grid container spacing={2} className="bg-blue-100">
+            <Carousel
+                fullHeightHover={true}
+                duration={1000}
+                swipe={true}
+                interval={3000}
+                indicators={false}
+            >
+                {
+                    items.map((item, i) => <BannerItem key={i} item={item} />)
+                }
+            </Carousel>
+            {/* <Grid container spacing={2} className="bg-blue-100">
                 <Grid item xs={12} md={6}>
                     <div className="text-4xl lg:mt-20 lg:text-left p-3 bg-blue-100">
                         <p>বিভিন্ন ইসলামিক বই বিনামূল্যে পড়ার জন্য আমাদের সাথে যোগাযোগ করুন।</p>
@@ -31,20 +39,9 @@ const Banner = () => {
                     </div>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <Carousel
-                        fullHeightHover={true}
-                        duration={500}
-                        swipe={true}
-                        animation="slide"
-                        interval={2000}
-                        indicators={false}
-                    >
-                        {
-                            items.map((item, i) => <BannerItem key={i} item={item} />)
-                        }
-                    </Carousel>
+                    
                 </Grid>
-            </Grid>
+            </Grid> */}
         </Box>
 
     );
