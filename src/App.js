@@ -16,6 +16,7 @@ import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 import MyBooks from './pages/Dashboard/MyBooks/MyBooks';
 import NotFound from './pages/NotFound/NotFound';
 import ManageRequests from './pages/Dashboard/ManageRequests/ManageRequests/ManageRequests';
+import UserProfile from './pages/UserProfile/UserProfile';
 AOS.init();
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
             <Route path="/login" element={<Login />}>
             </Route>
             <Route path="/registration" element={<Registration />}>
+            </Route>
+            <Route path="/profile" element={<UserProfile />}>
             </Route>
             <Route path="*" element={<NotFound />}>
             </Route>
