@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Dashboard, Home, MenuBook } from '@mui/icons-material';
+import { Dashboard, Home, MenuBook, Reviews } from '@mui/icons-material';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
@@ -120,6 +120,17 @@ const Header = () => {
                     <MenuBook />
                 </IconButton>
                 <p>Books</p></MenuItem>
+            <MenuItem component={Link} to='/reviews'>
+                <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                >
+                    <Reviews />
+                </IconButton>
+                <p>Reviews</p></MenuItem>
 
             {user?.email && <MenuItem component={Link} to='/dashboard'>
                 <IconButton
@@ -161,6 +172,8 @@ const Header = () => {
                             <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/home" className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
 
                             <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/books" className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Books</Link>
+
+                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/reviews" className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reviews</Link>
 
                             {user?.email && <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/dashboard" className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</Link>}
 

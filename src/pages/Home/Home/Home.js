@@ -1,5 +1,4 @@
 import React from 'react';
-import useBooks from '../../../hooks/useBooks';
 import useGetRequest from '../../../hooks/useGetRequest';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
@@ -24,14 +23,20 @@ const Home = () => {
                         }
                     </div>
             }
-            <div className="container mb-12 mx-auto px-4 md:px-12">
-                <h1 className="py-8 text-5xl">Reviews</h1>
-                <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                    {
-                        reviews.map(review => <Review key={review._id} review={review}></Review>)
-                    }
-                </div>
-            </div>
+
+            <h1 className="py-8 text-5xl">Top Reviews</h1>
+            {
+                reviewIsLoading ?
+                    // <div className="fixed   h-screen w-screen  ">
+                    <div className="animate-spin top-0 left-0 right-0 ml-auto mr-auto z-50 rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div> : <div className="container mb-12 mx-auto px-4 md:px-12">
+                        <div className="flex flex-wrap -mx-1 lg:-mx-4">
+                            {
+                                reviews.slice(0, 3).map(review => <Review key={review._id} review={review}></Review>)
+                            }
+                        </div>
+                    </div>
+            }
+
             <Footer></Footer>
         </div>
     );

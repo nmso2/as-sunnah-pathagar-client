@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound/NotFound';
 import ManageRequests from './pages/Dashboard/ManageRequests/ManageRequests/ManageRequests';
 import UserProfile from './pages/UserProfile/UserProfile';
 import WriteReview from './pages/Dashboard/WriteReview/WriteReview';
+import Reviews from './pages/Reviews/Reviews';
 AOS.init();
 
 function App() {
@@ -30,29 +31,19 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/books" element={<Books />} />
             <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
-              <Route exact path='/dashboard' element={<PrivateRoute><DashboardHome /></PrivateRoute>}>
-              </Route>
-              <Route path='/dashboard/makeAdmin' element={<AdminRoute><MakeAdmin /></AdminRoute>}>
-              </Route>
-              <Route path='/dashboard/addBooks' element={<AdminRoute><AddBooks /></AdminRoute>}>
-              </Route>
-              <Route path='/dashboard/myBooks' element={<PrivateRoute><MyBooks /></PrivateRoute>}>
-              </Route>
-              <Route path='/dashboard/writeReview' element={<PrivateRoute><WriteReview /></PrivateRoute>}>
-              </Route>
-              <Route path='/dashboard/manageRequests' element={<AdminRoute><ManageRequests /></AdminRoute>}>
-              </Route>
+              <Route exact path='/dashboard' element={<PrivateRoute><DashboardHome /></PrivateRoute>} />
+              <Route path='/dashboard/makeAdmin' element={<AdminRoute><MakeAdmin /></AdminRoute>} />
+              <Route path='/dashboard/addBooks' element={<AdminRoute><AddBooks /></AdminRoute>} />
+              <Route path='/dashboard/myBooks' element={<PrivateRoute><MyBooks /></PrivateRoute>} />
+              <Route path='/dashboard/writeReview' element={<PrivateRoute><WriteReview /></PrivateRoute>} />
+              <Route path='/dashboard/manageRequests' element={<AdminRoute><ManageRequests /></AdminRoute>} />
             </Route>
-            <Route path="/login" element={<Login />}>
-            </Route>
-            <Route path="/registration" element={<Registration />}>
-            </Route>
-            <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>}>
-            </Route>
-            <Route path="/myBooks" element={<PrivateRoute><MyBooks /></PrivateRoute>}>
-            </Route>
-            <Route path="*" element={<NotFound />}>
-            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+            <Route path="/myBooks" element={<PrivateRoute><MyBooks /></PrivateRoute>} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
