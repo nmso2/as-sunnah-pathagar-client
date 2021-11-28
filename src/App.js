@@ -17,6 +17,7 @@ import MyBooks from './pages/Dashboard/MyBooks/MyBooks';
 import NotFound from './pages/NotFound/NotFound';
 import ManageRequests from './pages/Dashboard/ManageRequests/ManageRequests/ManageRequests';
 import UserProfile from './pages/UserProfile/UserProfile';
+import Review from './pages/Dashboard/Review/Review';
 AOS.init();
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
               <Route path='/dashboard/addBooks' element={<AdminRoute><AddBooks /></AdminRoute>}>
               </Route>
               <Route path='/dashboard/myBooks' element={<PrivateRoute><MyBooks /></PrivateRoute>}>
+              </Route>
+              <Route path='/dashboard/review' element={<PrivateRoute><Review /></PrivateRoute>}>
               </Route>
               <Route path='/dashboard/manageRequests' element={<AdminRoute><ManageRequests /></AdminRoute>}>
               </Route>

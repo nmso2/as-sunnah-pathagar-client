@@ -158,11 +158,11 @@ const Header = () => {
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>
 
-                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/home">Home</Link>
+                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/home" className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
 
-                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/books">Books</Link>
+                            <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/books" className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Books</Link>
 
-                            {user?.email && <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/dashboard">Dashboard</Link>}
+                            {user?.email && <Link style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }} to="/dashboard" className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</Link>}
 
                             <IconButton
                                 style={{ width: { xs: '50%', sm: 'block', md: 'auto' }, marginLeft: '30px' }}
