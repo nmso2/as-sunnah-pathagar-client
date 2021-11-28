@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
-const Review = () => {
+const WriteReview = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -56,4 +56,4 @@ const Review = () => {
     );
 };
 
-export default Review;
+export default WriteReview;

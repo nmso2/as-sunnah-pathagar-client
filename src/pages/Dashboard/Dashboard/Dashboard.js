@@ -108,7 +108,7 @@ function Dashboard(props) {
                         </ListItemIcon>
                         <ListItemText primary='My Books' />
                     </ListItem>
-                    <ListItem button component={Link} to='/dashboard/review'>
+                    <ListItem button component={Link} to='/dashboard/writeReview'>
                         <ListItemIcon>
                             <RateReview />
                         </ListItemIcon>
