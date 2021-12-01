@@ -6,8 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Dashboard, Home, MenuBook, Reviews } from '@mui/icons-material';
-import MoreIcon from '@mui/icons-material/MoreVert';
+import { Dashboard, Home, MenuBook, MenuSharp, Reviews } from '@mui/icons-material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import logo from '../../../resources/images/logo.svg'
@@ -199,7 +198,7 @@ const Header = () => {
                                 onClick={handleMobileMenuOpen}
                                 color="inherit"
                             >
-                                <MoreIcon />
+                                <MenuSharp />
                             </IconButton>
                         </Box>
                     </Toolbar>

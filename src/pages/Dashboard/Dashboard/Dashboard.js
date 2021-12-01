@@ -32,11 +32,11 @@ const appBarTheme = createTheme({
 
 const drawerWidth = 240;
 
+
 function Dashboard(props) {
     const { admin } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };

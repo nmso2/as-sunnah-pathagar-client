@@ -65,7 +65,7 @@ const Footer = () => {
             flex-col md:flex-row max-w-6xl">
                         <div className="mt-2">
                             © Copyright 2019-2021. All Rights Reserved by <a className="uppercase" href="https://www.facebook.com/%E0%A6%86%E0%A6%B8-%E0%A6%B8%E0%A7%81%E0%A6%A8%E0%A7%8D%E0%A6%A8%E0%A6%BE%E0%A6%B9-%E0%A6%AA%E0%A6%BE%E0%A6%A0%E0%A6%BE%E0%A6%97%E0%A6%BE%E0%A6%B0-107120294460789">As-Sunnah Pathagar</a><br />
-                            Design and Developed by <a className="uppercase" href="https://github.com/nmso2">Md. Nagib Mahfuz Subho</a>
+                            Design and Developed by <a className="uppercase" href="https://nagibmahfuzsubho.netlify.app/">Md. Nagib Mahfuz Subho</a>
                         </div>
                     </div>
                 </div>
