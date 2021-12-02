@@ -1,4 +1,4 @@
-import { Alert, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
+import { Alert, CircularProgress, Container, Grid, Snackbar, TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import React from 'react';
 import { useState } from 'react';
@@ -13,6 +13,8 @@ const Registration = () => {
     const [success, setSuccess] = useState(false);
     const navigate = useNavigate()
 
+    const [open, setOpen] = React.useState(false);
+
     const handleCreateUser = (e) => {
         e.preventDefault();
         if (loginData.password !== loginData.confirmPassword) {
@@ -26,8 +28,10 @@ const Registration = () => {
                 setError('');
                 saveUser(loginData.email, loginData.name, loginData.phone, loginData.address, 'POST');
                 setSuccess(true);
+                setOpen(true);
             }).catch((error) => {
                 setError(error.message);
+                setOpen(true);
             }).finally(() => { setIsLoading(false) });
     }
 
@@ -40,6 +44,15 @@ const Registration = () => {
         newLoginData[field] = value;
         setLoginData(newLoginData);
     }
+
+    //Snackbar Close
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
+
     return (
         <Container>
             <Grid container spacing={2}>
@@ -88,7 +101,7 @@ const Registration = () => {
                         />
                         <TextField
                             sx={{ width: "75%", m: 1 }}
-                            id="outlined-password-input"
+                            id="outlined-confirm-password-input"
                             label="Password"
                             type="password"
                             name="password"
@@ -114,6 +127,19 @@ const Registration = () => {
                     {isLoading && <CircularProgress />}
                     {success && <Alert severity="success">Registration Successfull!</Alert>}
                     {error && <Alert severity="error">{error}</Alert>}
+
+                    {success && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} >
+                        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                            Registration Successfull!
+                        </Alert>
+                    </Snackbar>}
+                    {error && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} >
+                        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                            {error}
+                        </Alert>
+                    </Snackbar>}
+
+
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <img src={login} style={{ width: '100%' }} alt="" srcset="" />

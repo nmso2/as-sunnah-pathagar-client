@@ -1,4 +1,4 @@
-import { Star, StarBorder, StarHalf } from '@mui/icons-material';
+import { Star, StarBorder } from '@mui/icons-material';
 import React from 'react';
 import Rating from 'react-rating';
 

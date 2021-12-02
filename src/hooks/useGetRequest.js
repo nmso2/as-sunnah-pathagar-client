@@ -12,7 +12,7 @@ const useGetRequest = (requestedItem) => {
                 setItems(data)
                 setIsLoading(false);
             });
-    }, []);
+    }, [requestedItem]);
 
     return { items, setItems, isLoading }
 };

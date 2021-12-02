@@ -1,4 +1,4 @@
-import { Alert, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
+import { Alert, CircularProgress, Container, Grid, Snackbar, TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import React from 'react';
 import { useState } from 'react';
@@ -14,6 +14,8 @@ const Login = () => {
     const phone = 'Not Provided';
     const address = 'Not Provided';
 
+    const [open, setOpen] = React.useState(false);
+
     const location = useLocation();
     const navigate = useNavigate()
     const redirect_uri = location.state?.from || '/';
@@ -25,6 +27,7 @@ const Login = () => {
         const newLoginData = { ...loginData };
         newLoginData[field] = value;
         setLoginData(newLoginData);
+        console.log(newLoginData);
     }
 
     const handleGoogleLogIn = () => {
@@ -32,9 +35,11 @@ const Login = () => {
             .then((result) => {
                 navigate(redirect_uri);
                 setError('');
+                setOpen(true);
                 saveUser(result.user.email, result.user.displayName, phone, address, 'PUT');
             }).catch((error) => {
                 setError(error.message);
+                setOpen(true);
             }).finally(() => setIsLoading(false));
     }
 
@@ -44,11 +49,20 @@ const Login = () => {
             .then(result => {
                 navigate(redirect_uri);
                 setError('');
+                setOpen(true);
                 setUser(result);
             }).catch((error) => {
                 setError(error.message);
+                setOpen(true);
             }).finally(() => setIsLoading(false));
     }
+    //Snackbar Close
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
     return (
         <Container>
             <Grid container spacing={2}>
@@ -57,22 +71,16 @@ const Login = () => {
                     <form onSubmit={handleEmailLogin}>
                         <TextField
                             sx={{ width: "75%", m: 1 }}
-                            id="outlined-email-input"
                             label="Email"
                             name="email"
                             onBlur={handleOnChange}
-                            type="email"
-                            autoComplete="current-email"
                             variant="standard"
                         />
                         <TextField
                             sx={{ width: "75%", m: 1 }}
-                            id="outlined-password-input"
                             label="Password"
-                            type="password"
                             name="password"
                             onBlur={handleOnChange}
-                            autoComplete="current-password"
                             variant="standard"
                         />
 
@@ -84,8 +92,18 @@ const Login = () => {
                     </NavLink> <br />
 
                     {isLoading && <CircularProgress />}
-                    {email && <Alert severity="success">Registration Successfull!</Alert>}
-                    {error && <Alert severity="error">{error}</Alert>}
+
+                    {email && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} >
+                        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                            Registration Successfull!
+                        </Alert>
+                    </Snackbar>}
+                    {error && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} >
+                        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                            {error}
+                        </Alert>
+                    </Snackbar>}
+
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <img src={login} style={{ width: '100%' }} alt="" srcset="" />
