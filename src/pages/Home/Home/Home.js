@@ -9,7 +9,7 @@ import Banner from '../Banner/Banner/Banner';
 import NewBooks from '../NewBooks/NewBooks';
 
 const Home = () => {
-    const { items: books, isLoading } = useGetRequest('books');
+    const { items: newBooks, isLoading } = useGetRequest('newBooks');
     const { items: reviews, isLoading: reviewIsLoading } = useGetRequest('reviews');
     const arrays = [1, 2, 3, 4];
     return (
@@ -27,7 +27,7 @@ const Home = () => {
                         }
                     </div> : <div className="container items-end my-10 p-5 mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
                         {
-                            books.slice(0, 4).map(book => <NewBooks key={book._id} book={book}></NewBooks>)
+                            newBooks.map(book => <NewBooks key={book._id} book={book}></NewBooks>)
                         }
                     </div>
             }
