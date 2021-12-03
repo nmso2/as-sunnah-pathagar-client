@@ -27,7 +27,6 @@ const Login = () => {
         const newLoginData = { ...loginData };
         newLoginData[field] = value;
         setLoginData(newLoginData);
-        console.log(newLoginData);
     }
 
     const handleGoogleLogIn = () => {
@@ -73,6 +72,7 @@ const Login = () => {
                             sx={{ width: "75%", m: 1 }}
                             label="Email"
                             name="email"
+                            type="email"
                             onBlur={handleOnChange}
                             variant="standard"
                         />
@@ -80,6 +80,7 @@ const Login = () => {
                             sx={{ width: "75%", m: 1 }}
                             label="Password"
                             name="password"
+                            type="password"
                             onBlur={handleOnChange}
                             variant="standard"
                         />
