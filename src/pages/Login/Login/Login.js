@@ -1,8 +1,8 @@
 import { Alert, CircularProgress, Container, Grid, Snackbar, TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import React from 'react';
-import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import login from '../../../resources/images/logo.svg'
@@ -10,6 +10,8 @@ import login from '../../../resources/images/logo.svg'
 const Login = () => {
 
     const { logInUsingGoogle, setIsLoading, loginWithEmailPassword, email, setUser, error, setError, isLoading, saveUser } = useAuth();
+    const { register, handleSubmit } = useForm();
+
 
     const phone = 'Not Provided';
     const address = 'Not Provided';
@@ -19,15 +21,6 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate()
     const redirect_uri = location.state?.from || '/';
-
-    const [loginData, setLoginData] = useState({})
-    const handleOnChange = e => {
-        const field = e.target.name;
-        const value = e.target.value;
-        const newLoginData = { ...loginData };
-        newLoginData[field] = value;
-        setLoginData(newLoginData);
-    }
 
     const handleGoogleLogIn = () => {
         logInUsingGoogle()
@@ -42,9 +35,8 @@ const Login = () => {
             }).finally(() => setIsLoading(false));
     }
 
-    const handleEmailLogin = e => {
-        e.preventDefault();
-        loginWithEmailPassword(loginData.email, loginData.password)
+    const handleEmailLogin = (data) => {
+        loginWithEmailPassword(data.email, data.password)
             .then(result => {
                 navigate(redirect_uri);
                 setError('');
@@ -67,13 +59,13 @@ const Login = () => {
             <Grid container spacing={2}>
                 <Grid item sx={{ mt: 8 }} xs={12} md={6}>
                     <Typography variant="body1" gutterBottom fontSize="40px">Login</Typography>
-                    <form onSubmit={handleEmailLogin}>
+                    <form onSubmit={handleSubmit(handleEmailLogin)}>
                         <TextField
                             sx={{ width: "75%", m: 1 }}
                             label="Email"
                             name="email"
                             type="email"
-                            onBlur={handleOnChange}
+                            {...register("email", { required: true })}
                             variant="standard"
                         />
                         <TextField
@@ -81,7 +73,7 @@ const Login = () => {
                             label="Password"
                             name="password"
                             type="password"
-                            onBlur={handleOnChange}
+                            {...register("password", { required: true })}
                             variant="standard"
                         />
 
@@ -107,7 +99,7 @@ const Login = () => {
 
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <img src={login} style={{ width: '100%' }} alt="" srcset="" />
+                    <img src={login} style={{ width: '100%' }} alt="" />
                 </Grid>
             </Grid>
         </Container>

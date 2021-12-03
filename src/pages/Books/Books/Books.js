@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../Shared/Header/Header';
 import Book from '../Book/Book';
 import Footer from '../../Shared/Footer/Footer';
-import { Pagination, Typography } from '@mui/material';
+import { Pagination } from '@mui/material';
 import BookLoading from '../../Shared/BookLoading/BookLoading';
 
 const Books = () => {
