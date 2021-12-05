@@ -7,7 +7,7 @@ import useGetRequest from '../../../hooks/useGetRequest';
 const DashboardHome = () => {
     const { items: users } = useGetRequest('users');
     const { items: requestedBooks } = useGetRequest('requestedBooks');
-    const { books } = useBooks();
+    const { count } = useBooks();
 
     const { admin, user } = useAuth();
 
@@ -54,7 +54,7 @@ const DashboardHome = () => {
                                             Total Books
                                         </div>
                                         <div className="text-xl font-bold text-white">
-                                            {books.length}
+                                            {count}
                                         </div>
                                     </div>
                                     <MenuBook sx={{ color: 'white' }} />
@@ -65,7 +65,7 @@ const DashboardHome = () => {
                 </div>
             </div> : <div>
                 <h2 className="text-6xl" >Hi <span className=" text-red-400">{user?.displayName}</span>, Welcome to Dashboard!</h2>
-                <p className="text-2xl mt-5">We are happy that you are one of our happy readers. We have total <span className=" text-red-400">{books.length}</span> different books.</p>
+                <p className="text-2xl mt-5">We are happy that you are one of our happy readers. We have total <span className=" text-red-400">{count}</span> different books.</p>
                 <p className="text-2xl mt-5">HAPPY READING!</p>
             </div>}
         </div>
